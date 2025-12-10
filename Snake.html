@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Snake Game</title>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0b1f1b, #0d2b25);
+    color: #e7f7f2;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+  }
+  h1 {
+    text-shadow: 0 0 10px #28f7a2;
+  }
+  #hud {
+    margin: 10px;
+    font-size: 18px;
+  }
+  canvas {
+    background: #111;
+    border: 2px solid #28f7a2;
+    box-shadow: 0 0 20px #28f7a2;
+  }
+</style>
+</head>
+<body>
+  <h1>🐍 Responsive Snake</h1>
+  <div id="hud">Score: <span id="score">0</span> | Level: <span id="level">1</span></div>
+  <canvas id="game"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const scoreEl = document.getElementById("score");
+const levelEl = document.getElementById("level");
+
+let tileSize, cols, rows;
+let snake, dir, nextDir, fruit;
+let score, level, interval, acc, lastTime, alive;
+
+function resizeCanvas() {
+  const size = Math.min(window.innerWidth, window.innerHeight) * 0.9;
+  canvas.width = size;
+  canvas.height = size;
+  cols = 20; // fixed grid count
+  rows = 20;
+  tileSize = Math.floor(size / cols);
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function start() {
+  snake = [{x: Math.floor(cols/2), y: Math.floor(rows/2)}];
+  dir = {x:1,y:0};
+  nextDir = dir;
+  fruit = randomFruit();
+  score = 0; level = 1; interval = 200; acc = 0; lastTime = performance.now();
+  alive = true;
+  requestAnimationFrame(loop);
+}
+
+function randomFruit() {
+  return {
+    x: Math.floor(Math.random()*cols),
+    y: Math.floor(Math.random()*rows)
+  };
+}
+
+function loop(now) {
+  if (!alive) return;
+  const dt = now - lastTime; lastTime = now;
+  acc += dt;
+  while (acc >= interval) { step(); acc -= interval; }
+  draw();
+  requestAnimationFrame(loop);
+}
+
+function step() {
+  dir = nextDir;
+  const head = {x: snake[0].x + dir.x, y: snake[0].y + dir.y};
+  if (head.x<0 || head.x>=cols || head.y<0 || head.y>=rows || snake.some(s=>s.x===head.x && s.y===head.y)) {
+    alive = false; return;
+  }
+  snake.unshift(head);
+  if (head.x===fruit.x && head.y===fruit.y) {
+    score++;
+    if (score % 5 === 0) { level++; interval = Math.max(60, interval*0.9); }
+    fruit = randomFruit();
+  } else {
+    snake.pop();
+  }
+  scoreEl.textContent = score;
+  levelEl.textContent = level;
+}
+
+function draw() {
+  ctx.fillStyle = "#111";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Fruit
+  ctx.fillStyle = "#f7d628";
+  ctx.fillRect(fruit.x*tileSize, fruit.y*tileSize, tileSize, tileSize);
+
+  // Snake
+  ctx.fillStyle = "#28f7a2";
+  snake.forEach((s,i)=>{
+    ctx.fillRect(s.x*tileSize, s.y*tileSize, tileSize, tileSize);
+  });
+}
+
+window.addEventListener("keydown", e=>{
+  if (e.key==="ArrowUp" && dir.y===0) nextDir={x:0,y:-1};
+  if (e.key==="ArrowDown" && dir.y===0) nextDir={x:0,y:1};
+  if (e.key==="ArrowLeft" && dir.x===0) nextDir={x:-1,y:0};
+  if (e.key==="ArrowRight" && dir.x===0) nextDir={x:1,y:0};
+});
+
+start();
+</script>
+</body>
+</html>

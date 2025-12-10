@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Survive a Dinosaur Attack</title>
+
+  <!-- Slightly spooky but more readable font -->
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-deep-jungle: #0b3d2e;
+      --bg-dark-canopy: #0a2c22;
+      --panel-fern: #114737;
+      --accent-lime: #a7f37d;
+      --accent-gold: #f2c14e;
+      --text-ivory: #f3f5f2;
+      --link-emerald: #36c68a;
+      --link-emerald-dark: #26a270;
+      --danger-red: #d44a4a;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 600px at 80% 0%, rgba(53, 122, 87, 0.08), transparent 40%),
+        radial-gradient(900px 500px at 10% 100%, rgba(53, 122, 87, 0.08), transparent 35%),
+        linear-gradient(180deg, var(--bg-dark-canopy), var(--bg-deep-jungle));
+      color: var(--text-ivory);
+      font-family: "Special Elite", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 3rem;
+      margin: 12px 0 6px;
+      color: var(--accent-lime);
+      text-shadow: 0 2px 0 rgba(0,0,0,0.25), 0 6px 16px rgba(0,0,0,0.35);
+    }
+
+    .subtitle {
+      text-align: center;
+      margin: 0 0 26px 0;
+      font-size: 1.2rem;
+      color: var(--accent-gold);
+      opacity: 0.95;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(17,71,55,0.92), rgba(10,44,34,0.92));
+      border: 1px solid rgba(167,243,125,0.18);
+      border-radius: 14px;
+      padding: 22px 20px;
+      box-shadow: 0 12px 22px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    h2 {
+      margin: 10px 0 12px;
+      font-size: 1.8rem;
+      color: var(--accent-lime);
+      text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+
+    ul.steps {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+    }
+
+    ul.steps li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 14px;
+      margin: 8px 0;
+      background: rgba(8, 35, 27, 0.6);
+      border-left: 4px solid var(--accent-lime);
+      border-radius: 10px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .glyph {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent-lime);
+      color: var(--bg-dark-canopy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25);
+    }
+
+    .callout {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--danger-red);
+      background: rgba(212, 74, 74, 0.12);
+      border-radius: 10px;
+      color: #ffd9d9;
+    }
+
+    a {
+      color: var(--link-emerald);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(54, 198, 138, 0.5);
+      transition: color 160ms ease, border-color 160ms ease, text-shadow 160ms ease;
+    }
+
+    a:hover {
+      color: var(--link-emerald-dark);
+      border-bottom-color: rgba(38, 162, 112, 0.7);
+      text-shadow: 0 0 6px rgba(54,198,138,0.35);
+    }
+
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: rgba(243,245,242,0.9);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="title">🦖 How to Survive a Dinosaur Attack 🦕</h1>
+    <p class="subtitle">A jungle‑hardened guide for unlikely encounters 🐊🌴</p>
+
+    <section class="panel">
+      <h2>Know your giants 🦕</h2>
+      <p>
+        Not all dinosaurs were apex predators. Understanding the difference between herbivores and carnivores can help you make smarter choices in a crisis.
+        Explore more:
+        <a href="https://en.wikipedia.org/wiki/Dinosaur" target="_blank">Dinosaur</a>,
+        <a href="https://en.wikipedia.org/wiki/Tyrannosaurus" target="_blank">Tyrannosaurus</a>,
+        <a href="https://en.wikipedia.org/wiki/Velociraptor" target="_blank">Velociraptor</a>,
+        <a href="https://en.wikipedia.org/wiki/Triceratops" target="_blank">Triceratops</a>.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Steps to take 🦖</h2>
+      <ul class="steps">
+        <li><span class="glyph">1</span><div><strong>Assess quietly 🦕:</strong> Freeze, breathe, and observe.</div></li>
+        <li><span class="glyph">2</span><div><strong>Break your silhouette 🌴:</strong> Use shadows and cover.</div></li>
+        <li><span class="glyph">3</span><div><strong>Go silent and scent-aware 🐊:</strong> Stay downwind.</div></li>
+        <li><span class="glyph">4</span><div><strong>Create angle, not a sprint 🦖:</strong> Move laterally, not straight lines.</div></li>
+        <li><span class="glyph">5</span><div><strong>Use natural barriers 🌳:</strong> Logs and rocks slow pursuit.</div></li>
+        <li><span class="glyph">6</span><div><strong>Distract—then relocate 🦕:</strong> Toss an object to divert attention.</div></li>
+        <li><span class="glyph">7</span><div><strong>Avoid provoking herbivores 🐢:</strong> Give them space.</div></li>
+        <li><span class="glyph">8</span><div><strong>Never corner yourself 🦖:</strong> Keep multiple exits.</div></li>
+        <li><span class="glyph">9</span><div><strong>Signal only when safe 🔦:</strong> Noise/light can attract predators.</div></li>
+        <li><span class="glyph">10</span><div><strong>Maintain distance and patience 🌴:</strong> Encounters are usually brief.</div></li>
+      </ul>
+
+      <div class="callout">⚠️ This guide is fictional fun. Always follow real-world safety with wildlife.</div>
+    </section>
+
+    <footer>
+      Made for the jungle—deep greens, cute dinos 🦖🦕, and a readable spooky font.
+    </footer>
+  </main>
+</body>
+</html>
